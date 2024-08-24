@@ -72,26 +72,27 @@
         }
        }
     .content-container.Gallery{
-        .Option.Foto{
+        display: flex;
+        flex-direction: row;
+        .image-container{
             display: flex;
             flex-direction: column;
-            padding: 0;
-            border: 0;
-            margin: 0;
+            width: 70vw;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
             img{
-                height: 90vh;
+                height: 80%;
                 width: auto;
-                border: 1px solid white;
             }
-            nav{
-                font-size: 14px;
-                border: 1px solid rgb(1, 1, 1);
-                border-radius: 10px;
-                padding: 5px;
-                height: 10vh;
-                box-sizing: border-box;
+            
+        }
+        .next{
+            img{
+                width: 5vw;
             }
         }
+       
     }
     </style>
     <script type="module">
@@ -154,6 +155,7 @@
                 text: "Te amo sin medida"
             }
         ]
+        let cont = 1
         const times = length => Array.from({ length }, (_,i)=>i)
         function handleEvent(e){
             e.preventDefault()
@@ -215,27 +217,34 @@
             <img src="https://github.com/Masebav19/paginaWeb/blob/master/Foto1.JPEG?raw=true" alt="Foto">`
             $contentContainer.innerHTML = $elementInicio
         }
-        createMenu()
+        
 
         function createGallery(){
             $contentContainer.innerHTML=''
-            times(17).map(i=>{
-                const cloneMenu = $options.content.cloneNode(true)
-                const $gallery = cloneMenu.querySelector('.Option')
-                const $img = $gallery.querySelector('img')
-                const $imgDescription = $gallery.querySelector('nav')
-                $img.src = `https://github.com/Masebav19/paginaWeb/blob/master/public/foto${i+1}.JPEG?raw=true`
-                $img.alt = `Foto${i+1}`
-                $img.classList.add('Foto')
-                $imgDescription.textContent= ImagesDescriptions[i].text
-                $imgDescription.classList.add('Foto-descripcion')
-                $gallery.classList.add('Foto')
-                $contentContainer.appendChild($gallery)
-            })
+            const $gelleryContent = $('.gallery-element')
+            const cloneGallery = $gelleryContent.content.cloneNode(true)
+            const $Photogallery = cloneGallery.querySelector('.image-container')// --> Imagen y la description
+            const $img = $Photogallery.querySelector('img') // --> Es la imagen
+            const $imgDescription = $Photogallery.querySelector('span') //--> description
+            const $nav = cloneGallery.querySelector('.next') // --> Boton de siguiente
+            $img.src = `https://github.com/Masebav19/paginaWeb/blob/master/public/foto${cont}.JPEG?raw=true`
+            $img.alt = `Foto${cont}`
+            $img.classList.add('Foto')
+            $imgDescription.textContent= ImagesDescriptions[cont-1].text
+            $imgDescription.classList.add('Foto-descripcion')
+            $Photogallery.classList.add('Foto')
+            $nav.addEventListener('click',handleNextImage)
+            $contentContainer.appendChild(cloneGallery)
             $contentContainer.classList.add('Gallery')
-            
-            
         }
+        function handleNextImage(){
+            cont++;
+            if(cont === 17) cont = 1
+            createGallery()
+            return
+        }
+
+        createMenu()
         createHome()
     </script>
 </head>
@@ -250,6 +259,9 @@
     </div>
     
     <template class="option-element">
+        <div class="previus">
+            <img src="https://raw.githubusercontent.com/Masebav19/paginaWeb/b88e054d398bc901ea3c6f8235ebe6d81d249d37/next.svg" alt="Next">
+        </div>
         <span class="Option">
                 <img src="" alt="">
                 <nav></nav>
@@ -261,7 +273,7 @@
                 <span></span>
         </div>  
         <div class="next">
-            <img src="" alt="">
+            <img src="https://raw.githubusercontent.com/Masebav19/paginaWeb/b88e054d398bc901ea3c6f8235ebe6d81d249d37/next.svg" alt="Next">
         </div>
     </template>
 </body>
