@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regalo</title>
+    <style>
+        body{
+            background: #11527a;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+            'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 
+            'Helvetica Neue', sans-serif;
+        }
+        .major-container{
+            display: flex;
+            flex-direction: row;
+            .menu-container{
+                height: 100vh;
+                width: auto;
+                font-size: 10px;
+                display: flex;
+                flex-direction: column;
+                Option{
+                    margin: 20px;
+                }
+                nav{
+                    position: fixed;
+                    right: 0;
+                    color: transparent;
+                }
+                img{
+                    height: 15px;
+                    width: auto;
+                }
+                
+            }
+        .menu-container:hover{
+            width: 15vw;
+            display: flex;
+            flex-direction: column;
+            .Option{
+                display: flex;
+                flex-direction: row;
+                padding-bottom: 7px; 
+                transition: padding-bottom ease 0.5s ;
+            }
+            nav{
+                position: relative;
+                color: white;
+                transition: all ease 2s;
+            }
+            .Option:hover{
+                cursor: pointer;
+                background: #2e8bc5;
+                transition: background ease 1.2s;
+            }
+        }
+        }
+       .content-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        .Init{
+            display: block;
+            width: 300px;
+        }
+        img{
+            height: auto;
+            width: 200px;
+        }
+       }
+        
+    </style>
+    <script type="module">
+        const $ = element => document.querySelector(element)
+        const $majorContainer = $(".major-container")
+        const $menucontainer = $(".menu-container")
+        const $contentContainer = $(".content-container")
+        const $options = $(".option-element")
+        const $gallery = $('.Option')
+        const OPTIONS = ['Home','Galería','Línea del tiempo','Notas de Amor','Lista de deseos','Música']
+
+        const times = length => Array.from({ length }, (_,i)=>i)
+        function handleEvent(e){
+            e.preventDefault()
+            const element=e.target
+            switch (element.textContent){
+                case 'Home':{
+                    createHome()
+                    break
+                }
+                case 'Galería':{
+                    createGallery()
+                    break
+                }
+                case 'Línea del tiempo':{
+                    createTimeLine()
+                    break
+                }
+                case 'Notas de Amor':{
+                    createLoveNotes()
+                    break
+                }
+                case 'Lista de deseos':{
+                    createWishesLists()
+                    break
+                }
+                case 'Música':{
+                    createMusic()
+                    break
+                }
+            }
+        }
+        function createMenu(){
+            
+            times(6).map(i => { 
+                const cloneMenu = $options.content.cloneNode(true)
+                const $newOption = cloneMenu.querySelector('.Option')
+                const $optionName = $newOption.querySelector('nav')
+                const $optionIcon = $newOption.querySelector('img')
+                $optionName.textContent = OPTIONS[i]
+                $optionIcon.src = `./icon${i+1}.svg`
+                $optionName.addEventListener('click',handleEvent)
+                $menucontainer.appendChild($newOption)
+            })
+        }
+        
+        function createHome(){
+            const text = 
+            `¡Hola, mi amor! 🌟<br>
+
+            Bienvenida a este pequeño rincón del universo que he creado solo para ti. Aquí, cada imagen, cada palabra, y cada detalle están dedicados a recordarte lo especial que eres para mí. Este espacio es un reflejo de lo mucho que te amo, de los momentos que hemos compartido, y de los sueños que aún nos quedan por vivir juntos.
+
+            Quiero que cada vez que visites esta página, sientas cuánto te valoro y cuánto significas en mi vida. Eres mi inspiración, mi alegría y la razón por la que sonrío cada día.
+
+            Gracias por ser tú, gracias por estar a mi lado. 💖 <br>
+
+            Con todo mi amor, <br>
+            Mateo`
+            const $elementInicio = `<span class= "Init">${text}</span>
+            <img src="./Foto1.jpeg" alt="Foto">`
+            $contentContainer.innerHTML = $elementInicio
+        }
+        createMenu()
+
+        function createGallery(){
+            $contentContainer.innerHTML=''
+
+            const Clonegallery = $gallery.cloneNode(true)
+            const $img = Clonegallery.querySelector('img')
+            const $imgDescriptio = Clonegallery.querySelector('nav')
+            
+        }
+        createHome()
+    </script>
+</head>
+<body>
+    <div class="major-container">
+        <div class="menu-container">
+               
+        </div>
+        <div class="content-container">
+            ashdkajdh
+        </div>
+    </div>
+    
+    <template class="option-element">
+        <span class="Option">
+                <img src="" alt="">
+                <nav></nav>
+            </span>  
+    </template>
+</body>
+</html>
