@@ -226,20 +226,28 @@
             const $Photogallery = cloneGallery.querySelector('.image-container')// --> Imagen y la description
             const $img = $Photogallery.querySelector('img') // --> Es la imagen
             const $imgDescription = $Photogallery.querySelector('span') //--> description
-            const $nav = cloneGallery.querySelector('.next') // --> Boton de siguiente
+            const $next = cloneGallery.querySelector('.next') // --> Boton de siguiente
+            const $return = cloneGallery.querySelector('.previus')
             $img.src = `https://github.com/Masebav19/paginaWeb/blob/master/public/foto${cont}.JPEG?raw=true`
             $img.alt = `Foto${cont}`
             $img.classList.add('Foto')
             $imgDescription.textContent= ImagesDescriptions[cont-1].text
             $imgDescription.classList.add('Foto-descripcion')
             $Photogallery.classList.add('Foto')
-            $nav.addEventListener('click',handleNextImage)
+            $next.addEventListener('click',handleNextImage)
+            $return.addEventListener('click',handlePreviusImage)
             $contentContainer.appendChild(cloneGallery)
             $contentContainer.classList.add('Gallery')
         }
         function handleNextImage(){
             cont++;
             if(cont === 17) cont = 1
+            createGallery()
+            return
+        }
+        function handlePreviusImage(){
+            cont--;
+            if(cont === 0) cont = 17
             createGallery()
             return
         }
@@ -259,15 +267,17 @@
     </div>
     
     <template class="option-element">
-        <div class="previus">
-            <img src="https://raw.githubusercontent.com/Masebav19/paginaWeb/b88e054d398bc901ea3c6f8235ebe6d81d249d37/next.svg" alt="Next">
-        </div>
+        
         <span class="Option">
                 <img src="" alt="">
                 <nav></nav>
         </span>  
     </template>
+
     <template class="gallery-element">
+        <div class="previus">
+            <img src="https://raw.githubusercontent.com/Masebav19/paginaWeb/cd0e1ac713db0159a79e8d4e7d35db29458c69f9/previus.svg" alt="Previus">
+        </div>
         <div class="image-container">
                 <img src="" alt="">
                 <span></span>
