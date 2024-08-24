@@ -81,16 +81,36 @@
             height: 100vh;
             align-items: center;
             justify-content: center;
+            margin: 0;
             img{
                 height: 80%;
                 width: auto;
             }
+            img:hover{
+                transform: scale(1.2);
+                transition: all ease 1s;
+            }
+            span:hover{
+                transform: translateY(-320px);
+                transition: all linear 1.6s;
+            }
             
         }
-        .next{
+        .next,.previus{
+            margin: 0;
+            height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
             img{
                 width: 5vw;
             }
+        }
+
+        .next:hover,.previus:hover{
+            background: rgba(255, 255, 255, 0.451);
+            transition: all ease 1.5s;
         }
        
     }
@@ -101,7 +121,7 @@
         const $menucontainer = $(".menu-container")
         const $contentContainer = $(".content-container")
         const $options = $(".option-element")
-        const OPTIONS = ['Home','Galería','Línea del tiempo','Notas de Amor','Lista de deseos','Música']
+        const OPTIONS = ['Home','Galería','Notas de Amor','Lista de deseos','Música']
         const ImagesDescriptions = [
             {
                 text: "Eres mi todo ❤"
@@ -283,7 +303,7 @@
                 <span></span>
         </div>  
         <div class="next">
-            <img src="https://raw.githubusercontent.com/Masebav19/paginaWeb/5d0ed364fcf208a0a1092ae0e2d1263923a18ad8/next.svg" alt="Next">
+            <img src="https://raw.githubusercontent.com/Masebav19/paginaWeb/46036a7b0f7d5d7d4ab0b316bfb3e250fa5f3303/next.svg" alt="Next">
         </div>
     </template>
 </body>
