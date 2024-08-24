@@ -71,7 +71,28 @@
             width: 200px;
         }
        }
-        
+    .content-container.Gallery{
+        .Option.Foto{
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            img{
+                height: 90vh;
+                width: auto;
+                border: 1px solid white;
+            }
+            nav{
+                font-size: 14px;
+                border: 1px solid rgb(1, 1, 1);
+                border-radius: 10px;
+                padding: 5px;
+                height: 10vh;
+                box-sizing: border-box;
+            }
+        }
+    }
     </style>
     <script type="module">
         const $ = element => document.querySelector(element)
@@ -79,9 +100,60 @@
         const $menucontainer = $(".menu-container")
         const $contentContainer = $(".content-container")
         const $options = $(".option-element")
-        const $gallery = $('.Option')
         const OPTIONS = ['Home','Galería','Línea del tiempo','Notas de Amor','Lista de deseos','Música']
-
+        const ImagesDescriptions = [
+            {
+                text: "Eres mi todo ❤"
+            },
+            {
+                text: "Contigo, todo es mejor 😍"
+            },
+            {
+                text: "Te amo más cada día"
+            },
+            {
+                text: "Mi corazón es tuyo ❤❤😍"
+            },
+            {
+                text: "Eres mi felicidad"
+            },
+            {
+                text: "Eres mi persona favorita 👩‍🦱"
+            },
+            {
+                text: "Siempre juntos, siempre tú 💏"
+            },
+            {
+                text: "Mi amor por ti es infinito ♾"
+            },
+            {
+                text: "Tu sonrisa ilumina mi vida"
+            },
+            {
+                text: "Eres mi mejor decisión"
+            },
+            {
+                text: "Contigo, el mundo es más bonito"
+            },
+            {
+                text: "Eres mi hogar 🏠"
+            },
+            {
+                text: "Te elijo hoy y siempre"
+            },
+            {
+                text: "Eres mi razón de ser"
+            },
+            {
+                text: "Gracias por existir 😘"
+            },
+            {
+                text: "Eres mi sueño hecho realidad"
+            },
+            {
+                text: "Te amo sin medida"
+            }
+        ]
         const times = length => Array.from({ length }, (_,i)=>i)
         function handleEvent(e){
             e.preventDefault()
@@ -121,7 +193,7 @@
                 const $optionName = $newOption.querySelector('nav')
                 const $optionIcon = $newOption.querySelector('img')
                 $optionName.textContent = OPTIONS[i]
-                $optionIcon.src = `./icon${i+1}.svg`
+                $optionIcon.src = `https://raw.githubusercontent.com/Masebav19/paginaWeb/c68381a07a0f6e79ee7d4db892b10ac1f5630e60/icon${i+1}.svg`
                 $optionName.addEventListener('click',handleEvent)
                 $menucontainer.appendChild($newOption)
             })
@@ -140,17 +212,28 @@
             Con todo mi amor, <br>
             Mateo`
             const $elementInicio = `<span class= "Init">${text}</span>
-            <img src="./Foto1.jpeg" alt="Foto">`
+            <img src="https://github.com/Masebav19/paginaWeb/blob/master/Foto1.JPEG?raw=true" alt="Foto">`
             $contentContainer.innerHTML = $elementInicio
         }
         createMenu()
 
         function createGallery(){
             $contentContainer.innerHTML=''
-
-            const Clonegallery = $gallery.cloneNode(true)
-            const $img = Clonegallery.querySelector('img')
-            const $imgDescriptio = Clonegallery.querySelector('nav')
+            times(17).map(i=>{
+                const cloneMenu = $options.content.cloneNode(true)
+                const $gallery = cloneMenu.querySelector('.Option')
+                const $img = $gallery.querySelector('img')
+                const $imgDescription = $gallery.querySelector('nav')
+                $img.src = `https://github.com/Masebav19/paginaWeb/blob/master/public/foto${i+1}.JPEG?raw=true`
+                $img.alt = `Foto${i+1}`
+                $img.classList.add('Foto')
+                $imgDescription.textContent= ImagesDescriptions[i].text
+                $imgDescription.classList.add('Foto-descripcion')
+                $gallery.classList.add('Foto')
+                $contentContainer.appendChild($gallery)
+            })
+            $contentContainer.classList.add('Gallery')
+            
             
         }
         createHome()
@@ -162,7 +245,7 @@
                
         </div>
         <div class="content-container">
-            ashdkajdh
+            
         </div>
     </div>
     
@@ -170,7 +253,16 @@
         <span class="Option">
                 <img src="" alt="">
                 <nav></nav>
-            </span>  
+        </span>  
+    </template>
+    <template class="gallery-element">
+        <div class="image-container">
+                <img src="" alt="">
+                <span></span>
+        </div>  
+        <div class="next">
+            <img src="" alt="">
+        </div>
     </template>
 </body>
 </html>
