@@ -182,26 +182,27 @@
             const element=e.target
             switch (element.textContent){
                 case 'Home':{
+                    $contentContainer.className= 'content-container'
                     createHome()
                     break
                 }
                 case 'Galería':{
+                    $contentContainer.className= 'content-container'
                     createGallery()
                     break
                 }
-                case 'Línea del tiempo':{
-                    createTimeLine()
-                    break
-                }
                 case 'Notas de Amor':{
+                    $contentContainer.className= 'content-container'
                     createLoveNotes()
                     break
                 }
                 case 'Lista de deseos':{
+                    $contentContainer.className= 'content-container'
                     createWishesLists()
                     break
                 }
                 case 'Música':{
+                    $contentContainer.className= 'content-container'
                     createMusic()
                     break
                 }
@@ -209,13 +210,14 @@
         }
         function createMenu(){
             
-            times(6).map(i => { 
+            times(5).map(i => { 
                 const cloneMenu = $options.content.cloneNode(true)
                 const $newOption = cloneMenu.querySelector('.Option')
                 const $optionName = $newOption.querySelector('nav')
                 const $optionIcon = $newOption.querySelector('img')
                 $optionName.textContent = OPTIONS[i]
-                $optionIcon.src = `https://raw.githubusercontent.com/Masebav19/paginaWeb/c68381a07a0f6e79ee7d4db892b10ac1f5630e60/icon${i+1}.svg`
+                $optionIcon.src = `https://raw.githubusercontent.com/Masebav19/paginaWeb/96ba0f04d95fce71715fc3d56479a09a9f6e3b09/icon${i+1}.svg`
+                
                 $optionName.addEventListener('click',handleEvent)
                 $menucontainer.appendChild($newOption)
             })
