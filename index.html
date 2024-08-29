@@ -82,6 +82,10 @@
             align-items: center;
             justify-content: center;
             margin: 0;
+            span{
+                width: 150px;
+                height: 50px;
+            }
             img{
                 height: 80%;
                 width: auto;
@@ -91,7 +95,7 @@
                 transition: all ease 1s;
             }
             span:hover{
-                transform: translateY(-320px);
+                color: red;
                 transition: all linear 1.6s;
             }
             
@@ -114,8 +118,66 @@
         }
        
     }
+    .content-container.Notes{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        padding: 30px;
+        box-sizing: border-box;
+        .note-conatiner{
+            margin-bottom: 10px;
+            .icon-container{
+                img{
+                
+                    width: 80px;
+                }
+                span{
+                    
+                    display: none;
+                    visibility: hidden;
+
+                }
+            }
+            
+        }
+        .note-conatiner:hover img{
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+        }
+        .note-conatiner:hover span{
+            z-index: 5;
+            display: block;
+            position: relative;
+            visibility: visible;
+            background: #ffffff80;
+            border-radius: 10px;
+            width: 80px;
+            height: 80px;
+            padding: 5px;
+            font-size: 10px;
+            color: black;
+        }
+        .link-container{
+            display: flex;
+            flex-direction: row;
+            nav{
+                padding: 5px;
+                font-size: 12px;
+                a{
+                    color: white;
+                }
+            }
+            nav:hover{
+                border: 1px solid white;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px white;
+                transition: all ease 0.7s;
+            }
+        }
+    }
     </style>
     <script type="module">
+        //*************************************Variables *******************************************
         const $ = element => document.querySelector(element)
         const $majorContainer = $(".major-container")
         const $menucontainer = $(".menu-container")
@@ -176,6 +238,7 @@
             }
         ]
         let cont = 1
+        //**************************************Funciones/event listeners***********************
         const times = length => Array.from({ length }, (_,i)=>i)
         function handleEvent(e){
             e.preventDefault()
@@ -208,9 +271,11 @@
                 }
             }
         }
+        //*************************Funciones creadoras de elementos*********************************************
+        //*************************************MENU*************************************************************
         function createMenu(){
             
-            times(5).map(i => { 
+            times(3).map(i => { 
                 const cloneMenu = $options.content.cloneNode(true)
                 const $newOption = cloneMenu.querySelector('.Option')
                 const $optionName = $newOption.querySelector('nav')
@@ -222,7 +287,7 @@
                 $menucontainer.appendChild($newOption)
             })
         }
-        
+        //**************************************HOME*******************************************************
         function createHome(){
             const text = 
             `¡Hola, mi amor! 🌟<br>
@@ -240,7 +305,7 @@
             $contentContainer.innerHTML = $elementInicio
         }
         
-
+        //**************************************Galería de fotos********************************************************
         function createGallery(){
             $contentContainer.innerHTML=''
             const $gelleryContent = $('.gallery-element')
@@ -273,7 +338,91 @@
             createGallery()
             return
         }
+        //****************************************Notas de amor***********************************************
+        const LOVENOTES = [
+            {
+                msg: "Cada día a tu lado es un regalo que atesoro con todo mi corazón"
+            },
+            {
+                msg: "Eres la razón por la que creo en la magia del amor"
+            },
+            {
+                msg: "Tu amor me hace sentir como la persona más afortunada del mundo"
+            },
+            {
+                msg: "No importa lo que pase, siempre estaré aquí para ti"
+            },
+            {
+                msg: "Tus abrazos son mi lugar favorito en el mundo"
+            },
+            {
+                msg: "Amarte es la mejor decisión que he tomado en mi vida"
+            },
+            {
+                msg: "Cada momento contigo es un capítulo hermoso en nuestra historia"
+            },
+            {
+                msg: "Eres mi sol en días nublados y mi estrella en noches oscuras"
+            },
+            {
+                msg: "Te extraño 🥺"
+            },
+            {
+                msg: "Gracias por hacer mi vida tan increíblemente hermosa"
+            },
+            {
+                msg: "Cuando estoy contigo, siento que todo es posible"
+            },
+            {
+                msg: "Tú y yo somos el equipo perfecto"
+            },
+            {
+                msg: "Mi amor por ti crece con cada sonrisa que compartimos"
+            },
+            {
+                msg: "Eres el sueño del que nunca quiero despertar"
+            },
+            {
+                msg: "A tu lado, todo es más dulce, incluso los momentos más simples"
+            },
+            {
+                msg: "Te amo más de lo que las palabras pueden expresar"
+            },
+            {
+                msg: "Eres mi mejor amiga, mi confidente y mi amor eterno"
+            },
+            {
+                msg: "Tu amor es mi mayor inspiración"
+            },
+            {
+                msg: "Juntos, somos imparables"
+            },
+            {
+                msg: "Eres el amor de mi vida, y siempre lo serás"
+            },
+        ]
+        function createLoveNotes(){
+            $contentContainer.innerHTML=''
+            $contentContainer.classList.add('Notes')
+            const $Notes = $('.LoveNotes-element')
+            LOVENOTES.map(note =>{
+                const CloneNotes = $Notes.content.cloneNode(true)
+                const $NoteContainer = CloneNotes.querySelector('.note-conatiner')
+                const $imgDescription = CloneNotes.querySelector('span')
+                const $link1 = CloneNotes.querySelector('.link1')
+                const $link2 = CloneNotes.querySelector('.link2')
+                $imgDescription.textContent = note.msg
+                $link1.href = `mailto:mteov05@gmail.com?subject=Nota de amor&body=${note.msg}`
+                $link1.textContent = "Pame"
+                $link2.href = `mailto:mateo.vasquez1723@outlook.com?subject=Nota de amor&body=${note.msg}`
+                $link2.textContent = "Mateo"
+                $contentContainer.appendChild(CloneNotes)
+            })
+        }
 
+        //***********************************************Lista de deseos*************************************************
+
+        // Lammada a las funciones iniciales
         createMenu()
         createHome()
     </script>
@@ -307,6 +456,19 @@
         <div class="next">
             <img src="https://raw.githubusercontent.com/Masebav19/paginaWeb/46036a7b0f7d5d7d4ab0b316bfb3e250fa5f3303/next.svg" alt="Next">
         </div>
+    </template>
+    <template class="LoveNotes-element">
+        <div class="note-conatiner">
+            <div class="icon-container">
+                <img src="./loveCard.svg" alt="Tarjeta de amor">
+                <span></span>
+            </div>
+            <div class="link-container">
+                <nav><a class="link1"></a></nav>
+                <nav><a class="link2"></a></nav>
+            </div>
+        </div>
+
     </template>
 </body>
 </html>
