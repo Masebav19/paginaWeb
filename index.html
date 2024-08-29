@@ -27,9 +27,10 @@
                     position: fixed;
                     right: 0;
                     color: transparent;
+                    font-size: 1.5vw;
                 }
                 img{
-                    height: 15px;
+                    height: 5vh;
                     width: auto;
                 }
                 
@@ -41,7 +42,7 @@
             .Option{
                 display: flex;
                 flex-direction: row;
-                padding-bottom: 7px; 
+                padding-bottom: 0.3vw; 
                 transition: padding-bottom ease 0.5s ;
             }
             nav{
@@ -64,11 +65,12 @@
         width: 100%;
         .Init{
             display: block;
-            width: 300px;
+            width: 80%;
+            font-size: 2vw;
         }
         img{
             height: auto;
-            width: 200px;
+            width: 60%;
         }
        }
     .content-container.Gallery{
@@ -83,11 +85,12 @@
             justify-content: center;
             margin: 0;
             span{
-                width: 150px;
-                height: 50px;
+                width: 10vw;
+                height: 10vh;
+                font-size: 2vw;
             }
             img{
-                height: 80%;
+                height: 70%;
                 width: auto;
             }
             img:hover{
@@ -106,32 +109,33 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 20px;
+            border-radius: 10vw;
             img{
                 width: 5vw;
             }
         }
 
         .next:hover,.previus:hover{
-            background: rgba(255, 255, 255, 0.451);
+            background: #ffa9f873;
             transition: all ease 1.5s;
+            border: 1px solid #ffa9f8;
         }
        
     }
     .content-container.Notes{
         display: grid;
         grid-template-columns: repeat(4,1fr);
-        padding: 30px;
+        padding: 2vw;
         box-sizing: border-box;
         .note-conatiner{
-            margin-bottom: 10px;
+            margin-bottom: 1vw;
             .icon-container{
                 img{
                 
-                    width: 80px;
+                    width: 10vw;
                 }
                 span{
-                    
+                    text-align: center;
                     display: none;
                     visibility: hidden;
 
@@ -151,10 +155,10 @@
             visibility: visible;
             background: #ffffff80;
             border-radius: 10px;
-            width: 80px;
-            height: 80px;
+            width: 10vw;
+            height: 20vh;
             padding: 5px;
-            font-size: 10px;
+            font-size: 2.5vh;
             color: black;
         }
         .link-container{
@@ -162,7 +166,7 @@
             flex-direction: row;
             nav{
                 padding: 5px;
-                font-size: 12px;
+                font-size: 2vw;
                 a{
                     color: white;
                 }
