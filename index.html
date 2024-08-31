@@ -475,10 +475,12 @@
                 const $imgDescription = CloneNotes.querySelector('span')
                 const $link1 = CloneNotes.querySelector('.link1')
                 const $link2 = CloneNotes.querySelector('.link2')
+                const message = "Hola, esto es un mensaje de prueba";
+                const url = `https://wa.me/+593963048044?text=${encodeURIComponent(note.msg)}`;
                 $imgDescription.textContent = note.msg
-                $link1.href = `mailto:mateo.vasquez1723@outlook.com?subject=Nota de amor&body=${note.msg}`
+                $link1.href = `${url}`
                 $link1.textContent = "Pame"
-                $link2.href = `mailto:pame_cristina@hotmail.com?subject=Nota de amor&body=${note.msg}`
+                $link2.href = `${url}`
                 $link2.textContent = "Mateo"
                 $contentContainer.appendChild(CloneNotes)
             })
